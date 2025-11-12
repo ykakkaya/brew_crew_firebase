@@ -17,14 +17,14 @@ class _SignInPageConsumerState extends ConsumerState<SignInPage> {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-        title: Text('Brew - Crew',style: TextStyle(color: Colors.white),),
+        title: Text('Brew - Crew Login Sayfası',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.brown[400],
         ),
       body: Center(
         child: ElevatedButton(onPressed: ()async{
           User? user=await ref.read(authServiceProvider).signInAnon();
           print(user?.uid);
-        }, child: Text( 'Sign in Anonymously'))
+        }, child: Text( 'Sign in Anonymously \n${ref.read(authServiceProvider).currentUser?.uid}'))
       ),
     );
 }}
