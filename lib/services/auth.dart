@@ -38,10 +38,11 @@ class AuthService{
   Future<User?> signInWithEmailAndPassword({required String email,required String password,}
       ) async {
     try {
-      FBAuth.UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      FBAuth.UserCredential userCredential =await _auth.signInWithEmailAndPassword(
           email: email,
           password: password
       );
+      
       User? user = _userFromFirebaseUser( userCredential.user);
       return user;
     }catch (e) {
