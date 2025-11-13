@@ -1,5 +1,7 @@
 import 'package:brew_crew/providers/auth_service_provider.dart';
+import 'package:brew_crew/providers/login_register_switch_provider.dart';
 import 'package:brew_crew/screens/authenticate/sign_in_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,6 +21,19 @@ class RegisterPage extends ConsumerWidget {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.brown[400],
+        actions: [
+          Transform.scale(
+            scale: 0.7,
+            child: CupertinoSwitch(value: ref.watch(loginRegisterSwitchProvider), onChanged: (value){
+              ref.read(loginRegisterSwitchProvider.notifier).toggle();
+            },
+            activeTrackColor: Colors.brown.shade200,
+            inactiveTrackColor: Colors.brown.shade200,
+            
+            ),
+          ),
+          
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
